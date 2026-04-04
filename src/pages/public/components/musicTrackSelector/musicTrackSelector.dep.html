@@ -1,0 +1,11 @@
+<template>
+  <div x-bind:class="css.musicTrackSelector">
+    <template x-for="type in types">
+      <div x-bind:class="css.musicTrackSelectorItem">
+        <h3 x-text="type"></h3>
+        <p x-text="type"></p>
+        <p x-text="type"></p>
+      </div>
+    </template>
+  </div>
+</template>
