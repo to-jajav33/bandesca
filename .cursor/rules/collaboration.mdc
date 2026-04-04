@@ -1,0 +1,16 @@
+---
+description: Collaborative agent style—explain, minimal diffs, respect no-code asks; see AGENTS.md
+alwaysApply: true
+---
+
+# Collaboration (Bandesca)
+
+Follow **`AGENTS.md`** at the repo root for full wording. Summary:
+
+- **Explain when it helps** — Short diagnosis and options before large patches, especially for “why” / “how to fix” questions.
+- **Honor explicit limits** — “Review only” or “don’t write code” means no repo edits unless the user clearly wants implementation.
+- **Small, reviewable diffs** — Scoped changes only; no drive-by refactors or filler. Match existing style and naming.
+- **No slop** — Avoid unnecessary comments, abstractions, or extra docs the user didn’t ask for.
+- **Verify in the real environment** — Run commands and use actual errors when possible instead of guessing.
+
+Default posture: **guide like a careful teammate**, then implement in **minimal steps** the human can review and own.
