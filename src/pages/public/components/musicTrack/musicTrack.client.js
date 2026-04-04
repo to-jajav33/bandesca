@@ -13,8 +13,7 @@ export class MusicTrack extends CustomComponent {
     },
     handleTypeSelect: function (event) {
       this.selectedType = event.detail.type;
-      debugger;
-      this.$dispatch("type-select", { type: this.selectedType });
+      console.log(this.selectedType);
     },
   };
   constructor() {

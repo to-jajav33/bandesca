@@ -4,14 +4,17 @@
       <div x-bind:class="css.musicTrackSelectorHeader">
         <button x-on:click="removeTrack()">X</button>
       </div>
-      <music-track-selector
-        x-if="selectedType == 'none'"
-        x-on:select="handleTypeSelect($event)"
-      ></music-track-selector>
+      <template x-if="selectedType == 'none'">
+        <music-track-selector
+          x-on:select="handleTypeSelect"
+        ></music-track-selector>
+      </template>
       <template x-if="selectedType != 'none'">
-        <h3 x-text="selectedType"></h3>
-        <p x-text="selectedType"></p>
-        <p x-text="selectedType"></p>
+        <div x-bind:class="css.musicTrackContent">
+          <h3 x-text="selectedType"></h3>
+          <p x-text="selectedType"></p>
+          <p x-text="selectedType"></p>
+        </div>
       </template>
     </div>
   </div>

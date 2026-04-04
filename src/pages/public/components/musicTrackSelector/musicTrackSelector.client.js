@@ -5,10 +5,10 @@ import * as musicTrackSelectorCss from "./musicTrackSelector.dep.module.css" wit
 export class MusicTrackSelector extends CustomComponent {
   data = {
     css: musicTrackSelectorCss,
-    types: ["midi", "audio", "voice", "none"],
-    selectedType: "midi",
-    handleSelect: function (event) {
-      this.selectedType = event.detail.type;
+    types: ["midi", "audio", "voice"],
+    selectedType: "none",
+    handleSelect: function (type) {
+      this.selectedType = type;
       this.$dispatch("select", { type: this.selectedType });
     },
   };
