@@ -63,7 +63,10 @@ const buildSrcFilesAndDir = async (
     }
 
     let type = "server";
-    let possibleType = currentPagePath.split(".").slice(-2)[0];
+    let possibleType = currentPagePath.split(".").slice(-3);
+    possibleType = currentPagePath.endsWith(".module.css")
+      ? possibleType[0]
+      : possibleType[1];
     if (possibleType === "asset") {
       type = "asset";
     } else if (possibleType === "client") {
