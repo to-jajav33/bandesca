@@ -51,11 +51,6 @@ const buildSrcFilesAndDir = async (
     const currentPagePath = path.join(currentDir, page);
     const generatedPagePath = path.join(generatedDir, ...dirs, page);
 
-    // check if page is already generated
-    if (fs.existsSync(generatedPagePath)) {
-      continue;
-    }
-
     if (fs.statSync(currentPagePath).isDirectory()) {
       await buildSrcFilesAndDir(
         generatedDir,
@@ -161,19 +156,22 @@ const buildSrcFilesAndDir = async (
   }
 };
 
-export async function buildStatic() {
+/** @param {{ incremental?: boolean }} [options] */
+export async function buildStatic(options = {}) {
+  const { incremental = false } = options;
   const outDir = path.join(import.meta.dir, "..", "dist", "static");
 
-  // clear outDir
-  fs.rmSync(outDir, { recursive: true });
-  fs.mkdirSync(outDir, { recursive: true });
-
-  console.log("outDir", outDir);
-  const generatedDir = path.join(import.meta.dir, "..", ".generated");
-  // create generatedDir if it doesn't exist
-  if (!fs.existsSync(generatedDir)) {
-    fs.mkdirSync(generatedDir, { recursive: true });
+  if (!incremental) {
+    fs.rmSync(outDir, { recursive: true, force: true });
+    fs.mkdirSync(outDir, { recursive: true });
+  } else if (!fs.existsSync(outDir)) {
+    fs.mkdirSync(outDir, { recursive: true });
   }
+
+  console.log("outDir", outDir, incremental ? "(incremental)" : "(clean)");
+  const generatedDir = path.join(import.meta.dir, "..", ".generated");
+  fs.rmSync(generatedDir, { recursive: true, force: true });
+  fs.mkdirSync(generatedDir, { recursive: true });
   console.log("generatedDir", generatedDir);
 
   const filesToBuild = [];
@@ -225,4 +223,8 @@ export async function buildStatic() {
 
   console.log("result", result);
   return result.outputs;
+}
+
+if (import.meta.main) {
+  await buildStatic();
 }

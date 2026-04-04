@@ -4,7 +4,8 @@
   "description": "Bandesca is a platform for creating and sharing music",
   "main": "index.js",
   "scripts": {
-    "start:static": "BANDESCA_MODE=static npx bun run server/index.js",
+    "dev:static": "BANDESCA_MODE=static BANDESCA_WATCH=1 npx bun --watch run server/index.js",
+    "start:static": "BANDESCA_MODE=static BANDESCA_WATCH=1 npx bun run server/index.js",
     "start:ssr": "BANDESCA_MODE=ssr npx bun run server/index.js",
     "build:static": "BANDESCA_MODE=static npx bun run scripts/build-static.js",
     "build:ssr": "BANDESCA_MODE=ssr npx bun run scripts/build-ssr.js"
