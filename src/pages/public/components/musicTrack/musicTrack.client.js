@@ -1,13 +1,13 @@
 import { CustomComponent } from "../customComponent.client";
 import * as template from "./musicTrack.dep.html" with { type: "text" };
-
+import * as musicTrackCss from "./musicTrack.dep.module.css" with { type: "css" };
 export class MusicTrack extends CustomComponent {
+  data = {
+    css: musicTrackCss,
+  };
   constructor() {
     super();
   }
 }
-
-console.log("template", template);
-console.log("template.default", template.default);
 
 MusicTrack.define(template.default);

@@ -1,8 +1,4 @@
 <template>
-  <script
-    type="module"
-    src="./public/components/musicTrack/musicTrack.client.js"
-  ></script>
   <div
     style="
       display: flex;
@@ -17,6 +13,6 @@
     <template x-for="track in tracks">
       <music-track></music-track>
     </template>
-    <button x-on:click="addTrack()" style="width: 100%">+</button>
   </div>
+  <button x-on:click="addTrack()" style="width: 100%">+</button>
 </template>

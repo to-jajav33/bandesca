@@ -195,6 +195,11 @@ export async function buildStatic(options = {}) {
     result = await Bun.build({
       entrypoints: filesToBuild,
       outdir: outDir,
+      // Same logical basename + .js and .css (e.g. musicTrack.client) would map to one
+      // FileSystemRouter URL; hashing entry outputs keeps JS and CSS on distinct routes.
+      naming: {
+        entry: "[dir]/[name]-[hash].[ext]",
+      },
       minify: process.env.NODE_ENV === "production" ? true : false,
       target: "browser",
       format: "esm",
@@ -213,6 +218,23 @@ export async function buildStatic(options = {}) {
 
     if (result.errors && result.errors.length > 0) {
       throw new Error(result.errors.map((error) => error.text).join("\n"));
+    }
+
+    // Hashed entry names turn `index.html` into `index-<hash>.html`, which no longer maps to `/`
+    // in FileSystemRouter. Keep a stable `index.html` at outDir root (same contents, chunk refs OK).
+    const rootEntries = fs.readdirSync(outDir);
+    const hashedIndex = rootEntries.filter((f) =>
+      /^index-[a-z0-9]+\.html$/i.test(f),
+    );
+    if (hashedIndex.length === 1) {
+      const from = path.join(outDir, hashedIndex[0]);
+      const to = path.join(outDir, "index.html");
+      fs.copyFileSync(from, to);
+      fs.unlinkSync(from);
+    } else if (hashedIndex.length > 1) {
+      console.warn(
+        "build-static: multiple index-*.html at out root; not normalizing index.html",
+      );
     }
   } catch (error) {
     console.error(error);
