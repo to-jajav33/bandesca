@@ -6,6 +6,11 @@ import "../musicTrackSelector/musicTrackSelector.client.js";
 export class MusicTrack extends CustomComponent {
   data = {
     css: musicTrackCss,
+    selectedType: "none",
+    removeTrack: function () {
+      this.selectedType = "none";
+      this.$dispatch("remove");
+    },
     handleTypeSelect: function (event) {
       this.selectedType = event.detail.type;
       debugger;

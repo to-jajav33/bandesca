@@ -1,7 +1,22 @@
 .musicTrack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   background-color: var(--primary-color);
   color: var(--tertiary-color);
   padding: 1rem;
   border-radius: 0.5rem;
   width: 100%;
+}
+
+.musicTrackSelectorContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.musicTrackSelectorHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
