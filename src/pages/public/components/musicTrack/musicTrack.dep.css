@@ -1,0 +1,7 @@
+.music-track {
+  background-color: var(--primary-color);
+  color: var(--tertiary-color);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+}

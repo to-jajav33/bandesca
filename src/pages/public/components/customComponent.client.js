@@ -2,6 +2,8 @@ let domParser = null;
 
 export class CustomComponent extends HTMLElement {
   static templateStringCache = "";
+  data = {}; // override this in the constructor of the subclass
+
   constructor() {
     super();
 
@@ -14,7 +16,7 @@ export class CustomComponent extends HTMLElement {
     // x-data is evaluated as JS; UUIDs are invalid identifiers/expressions (digits, `-`).
     const key = `_${crypto.randomUUID().replace(/-/g, "_")}`;
 
-    Alpine.data(key, () => this);
+    Alpine.data(key, () => this.data);
 
     this.setAttribute("x-data", key);
     this.setAttribute("x-key", key);

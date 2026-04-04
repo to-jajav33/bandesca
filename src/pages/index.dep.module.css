@@ -25,6 +25,15 @@ body {
   overflow: hidden;
 }
 
+button {
+  background-color: var(--primary-color);
+  color: var(--tertiary-color);
+  padding: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
 header {
   background-color: var(--primary-color);
   color: var(--tertiary-color);

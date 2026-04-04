@@ -6,7 +6,7 @@
     <script type="module" src="public/alpine.client.js"></script>
     <script
       type="module"
-      src="./public/components/musicTrack/musicTrack.client.js"
+      src="./public/components/musicTrackHolder/musicTrackHolder.client.js"
     ></script>
   </head>
   <body>
@@ -20,12 +20,14 @@
     <!-- main -->
     <main>
       <h2>Welcome to Bandesca</h2>
-      <music-track></music-track>
+      <music-track-holder></music-track-holder>
     </main>
 
     <!-- footer -->
-    <footer>
-      <p>Copyright 2026 Bandesca</p>
+    <footer x-data="{date: Date.now()}">
+      <p>
+        Copyright <span x-text="new Date(date).getFullYear()"></span> Bandesca
+      </p>
     </footer>
   </body>
 </html>
