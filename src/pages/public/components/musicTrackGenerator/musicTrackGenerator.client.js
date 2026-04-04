@@ -1,10 +1,10 @@
-import { CustomComponent } from "../customComponent.client";
+import { CustomComponent } from "../customComponent.client.js";
 // Load music-track before holder markup uses <music-track>; do not use <script src> in the
 // template — paths resolve from the document URL (/) and Bun cannot rewrite hashed filenames there.
 import "../musicTrack/musicTrack.client.js";
-import * as template from "./musicTrackHolder.dep.html" with { type: "text" };
+import * as template from "./musicTrackGenerator.dep.html" with { type: "text" };
 
-export class MusicTrackHolder extends CustomComponent {
+export class MusicTrackGenerator extends CustomComponent {
   data = {
     tracks: [{}],
     addTrack: function () {
@@ -17,4 +17,4 @@ export class MusicTrackHolder extends CustomComponent {
   }
 }
 
-MusicTrackHolder.define(template.default);
+MusicTrackGenerator.define(template.default);
