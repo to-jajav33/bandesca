@@ -7,6 +7,10 @@ export class MusicTrackSelector extends CustomComponent {
     css: musicTrackSelectorCss,
     types: ["midi", "audio", "voice", "none"],
     selectedType: "midi",
+    handleSelect: function (event) {
+      this.selectedType = event.detail.type;
+      this.$dispatch("select", { type: this.selectedType });
+    },
   };
 
   constructor() {

@@ -1,5 +1,8 @@
 <template>
   <div x-bind:class="css.musicTrack">
-    <music-track-selector></music-track-selector>
+    <music-track-selector
+      x-if="selectedType == 'none'"
+      x-on:select="handleTypeSelect($event)"
+    ></music-track-selector>
   </div>
 </template>

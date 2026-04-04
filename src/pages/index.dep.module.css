@@ -32,6 +32,21 @@ button {
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: var(--tertiary-color);
+    color: color-mix(
+      in srgb,
+      var(--tertiary-color) 50%,
+      var(--primary-color) 50%
+    );
+  }
+  &:active {
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+    border: 1px solid var(--tertiary-color);
+    transform: scale(0.95);
+  }
 }
 
 header {
