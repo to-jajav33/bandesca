@@ -17,7 +17,9 @@
       </div>
       <div x-cloak x-show="selectedType != 'none'">
         <div x-bind:class="css.musicTrackContent">
-          <h3 x-text="selectedType"></h3>
+          <template x-if="selectedType == 'midi'">
+            <music-track-type-midi></music-track-type-midi>
+          </template>
         </div>
       </div>
     </div>
