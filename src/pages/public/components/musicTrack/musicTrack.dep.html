@@ -2,7 +2,13 @@
   <div x-bind:class="css.musicTrack">
     <div x-bind:class="css.musicTrackSelectorContainer">
       <div x-bind:class="css.musicTrackSelectorHeader">
-        <button x-on:click="removeTrack()">X</button>
+        <!-- only show x if its not the first track -->
+        <template x-if="trackIndex > 0 && selectedType != 'none'">
+          <button x-on:click="removeTrack()">X</button>
+        </template>
+        <template x-if="trackIndex > 0 && selectedType == 'none'">
+          <button>delete</button>
+        </template>
       </div>
       <div x-cloak x-show="selectedType == 'none'">
         <music-track-selector
