@@ -10,7 +10,7 @@
       border-radius: 0.5rem;
     "
   >
-    <template x-for="(track, trackIndex) in tracks" x-bind:key="track">
+    <template x-for="(track, trackIndex) in tracks" x-bind:key="trackIndex">
       <music-track x-on:remove="handleRemove"></music-track>
     </template>
   </div>

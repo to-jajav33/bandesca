@@ -21,6 +21,12 @@
   justify-content: flex-end;
 }
 
+.musicTrackDetail {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
 .musicTrackContent {
   display: flex;
   flex-direction: row;
