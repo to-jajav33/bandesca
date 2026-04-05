@@ -11,8 +11,9 @@ export class MusicTrack extends CustomComponent {
       this.selectedType = "none";
       this.$dispatch("remove");
     },
-    handleTypeSelect: function (event) {
+    handleTypeSelected: function (event) {
       this.selectedType = event.detail.type;
+      console.log("should react to this");
       console.log(this.selectedType);
     },
   };

@@ -6,10 +6,9 @@ export class MusicTrackSelector extends CustomComponent {
   data = {
     css: musicTrackSelectorCss,
     types: ["midi", "audio", "voice"],
-    selectedType: "none",
+    // Avoid a `selectedType` key here — merged scope with parent would capture writes.
     handleSelect: function (type) {
-      this.selectedType = type;
-      this.$dispatch("select", { type: this.selectedType });
+      this.$dispatch("typeselected", { type });
     },
   };
 
