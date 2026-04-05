@@ -1,14 +1,17 @@
 <template>
-  <div x-bind:class="css.musicTrackSelector">
-    <template x-for="type in types">
-      <button
-        x-bind:class="css.musicTrackSelectorItem"
-        x-on:click="handleSelect(type)"
-      >
-        <h3 x-text="type"></h3>
-        <p x-text="type"></p>
-        <p x-text="type"></p>
-      </button>
-    </template>
+  <div>
+    <h2>Select One</h2>
+    <div x-bind:class="css.musicTrackSelector">
+      <template x-for="type in types">
+        <button
+          x-bind:class="css.musicTrackSelectorItem"
+          x-on:click="handleSelect(type)"
+        >
+          <h3 x-text="type"></h3>
+          <p x-text="type"></p>
+          <p x-text="type"></p>
+        </button>
+      </template>
+    </div>
   </div>
 </template>
