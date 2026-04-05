@@ -10,6 +10,9 @@ export class MusicTrackGenerator extends CustomComponent {
     addTrack: function () {
       this.tracks.push({});
     },
+    handleRemove: function (trackIndex) {
+      this.tracks.splice(trackIndex, 1);
+    },
   };
 
   constructor() {

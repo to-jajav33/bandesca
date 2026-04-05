@@ -11,7 +11,7 @@
     "
   >
     <template x-for="(track, trackIndex) in tracks" x-bind:key="track">
-      <music-track></music-track>
+      <music-track x-on:remove="handleRemove"></music-track>
     </template>
   </div>
   <button x-on:click="addTrack()" style="width: 100%">+</button>

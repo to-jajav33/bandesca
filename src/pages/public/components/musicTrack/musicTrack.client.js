@@ -7,14 +7,14 @@ export class MusicTrack extends CustomComponent {
   data = {
     css: musicTrackCss,
     selectedType: "none",
-    removeTrack: function () {
+    setTrackToNone: function () {
       this.selectedType = "none";
+    },
+    deleteTrack: function () {
       this.$dispatch("remove");
     },
     handleTypeSelected: function (event) {
       this.selectedType = event.detail.type;
-      console.log("should react to this");
-      console.log(this.selectedType);
     },
   };
   constructor() {
